@@ -1,0 +1,98 @@
+#!/usr/bin/env node
+/**
+ * Generate index.html listing all appearance anxiety daily reports.
+ * Only shows reports from the last 30 days.
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+const WEEKDAYS = ['日', '一', '二', '三', '四', '五', '六'];
+
+const docsDir = path.join(__dirname, '..', 'docs');
+const files = fs.readdirSync(docsDir)
+  .filter((f) => f.startsWith('appearance-anxiety-') && f.endsWith('.html'))
+  .sort()
+  .reverse()
+  .slice(0, 30);
+
+let links = '';
+for (const f of files) {
+  const date = f.replace('appearance-anxiety-', '').replace('.html', '');
+  let dateDisplay = date;
+  let weekday = '';
+  try {
+    const d = new Date(date);
+    dateDisplay = `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
+    weekday = WEEKDAYS[d.getDay()];
+  } catch (_) {}
+  links += `  <li><a href="${f}">&#128197; ${dateDisplay}（週${weekday}）</a></li>\n`;
+}
+
+const total = files.length;
+
+const html = `<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Appearance Anxiety &middot; 容貌焦慮研究文獻日報</title>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; }
+  .container { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; padding: 80px 24px; }
+  .logo { font-size: 48px; text-align: center; margin-bottom: 16px; }
+  h1 { text-align: center; font-size: 24px; color: var(--text); margin-bottom: 8px; }
+  .subtitle { text-align: center; color: var(--accent); font-size: 14px; margin-bottom: 48px; }
+  .count { text-align: center; color: var(--muted); font-size: 13px; margin-bottom: 32px; }
+  ul { list-style: none; }
+  li { margin-bottom: 8px; }
+  a { color: var(--text); text-decoration: none; display: block; padding: 14px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; transition: all 0.2s; font-size: 15px; }
+  a:hover { background: var(--accent-soft); border-color: var(--accent); transform: translateX(4px); }
+  .banner-section { margin-top: 32px; }
+  .banner-link { display: flex; align-items: center; gap: 12px; padding: 14px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; text-decoration: none; color: var(--text); transition: all 0.2s; font-size: 14px; }
+  .banner-link:hover { background: var(--accent-soft); border-color: var(--accent); transform: translateX(4px); }
+  .banner-icon { font-size: 22px; }
+  footer { margin-top: 56px; text-align: center; font-size: 12px; color: var(--muted); }
+  footer a { display: inline; padding: 0; background: none; border: none; color: var(--muted); }
+  footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="logo">&#129300;</div>
+  <h1>Appearance Anxiety</h1>
+  <p class="subtitle">容貌焦慮研究文獻日報 &middot; 每日自動更新</p>
+  <p class="count">&#128218; 共 ${total} 期日報</p>
+  <ul>
+${links}  </ul>
+
+  <div class="banner-section">
+    <a href="https://www.leepsyclinic.com/" class="banner-link" target="_blank" rel="noopener">
+      <span class="banner-icon">&#127973;</span>
+      <span>李政洋身心診所首頁</span>
+    </a>
+  </div>
+  <div class="banner-section">
+    <a href="https://blog.leepsyclinic.com/" class="banner-link" target="_blank" rel="noopener">
+      <span class="banner-icon">&#128231;</span>
+      <span>訂閱電子報</span>
+    </a>
+  </div>
+  <div class="banner-section">
+    <a href="https://buymeacoffee.com/CYlee" class="banner-link" target="_blank" rel="noopener">
+      <span class="banner-icon">&#9749;</span>
+      <span>Buy Me a Coffee</span>
+    </a>
+  </div>
+
+  <footer>
+    <p>Powered by PubMed + Zhipu AI &middot; <a href="https://github.com/u8901006/appearance-anxiety">GitHub</a></p>
+  </footer>
+</div>
+</body>
+</html>`;
+
+fs.writeFileSync(path.join(docsDir, 'index.html'), html, 'utf-8');
+console.log('Index page generated');
