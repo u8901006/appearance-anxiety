@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Appearance Anxiety &middot; 容貌焦慮研究文獻日報 &middot; 2026年7月8日</title>
+<meta name="description" content="2026年7月8日 容貌焦慮研究文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(140,79,43,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(140,79,43,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(61,36,15,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(61,36,15,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff7f0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #5a7a3a; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,122,58,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(118,100,83,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff7f0; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(140,79,43,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #c47a4a); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .banner-section { margin-top: 36px; animation: fadeUp 0.5s ease 0.4s both; }
+  .banner-link { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(61,36,15,0.04); }
+  .banner-link:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .banner-icon { font-size: 28px; flex-shrink: 0; }
+  .banner-name { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .banner-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  .banner-desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">&#129300;</div>
+    <div class="header-text">
+      <h1>Appearance Anxiety &middot; 容貌焦慮研究文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">&#128197; 2026年7月8日</span>
+        <span class="badge badge-count">&#128218; 40 篇文獻</span>
+        <span class="badge badge-source">Powered by PubMed + Zhipu AI</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>&#128200; 今日文獻趨勢</h2>
+    <p class="summary-text">今日文獻呈現「數位時代下的身體意象」核心趨勢，約會App後設分析與社交媒體素養介入成為亮點，顯示從被動描述走向主動預防的轉向；同時跨性別與腫瘤領域的身體意象研究持續深化，強調族群差異與長期追蹤的重要性。</p>
+  </div>
+
+  <div class="section"><div class="section-title"><span class="section-icon">&#11088;</span>今日精選 TOP Picks</div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#1</span>
+            <span class="emoji-icon">📊</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>滑動式約會App使用與心理健康相關性的系統性回顧與後設分析</h3>
+          <p class="journal-source">Communications Psychology &middot; A systematic review and meta-analysis of the mental health correlates of swiping-based dating app use.</p>
+          <p>後設分析（27研究，N=21,263）發現約會App使用與行為失調（g=0.44）及身體意象困擾（g=0.32）呈現小至中度顯著關聯，女性與性少數群體的外貌脆弱性更高，為數位心理健康介入提供關鍵證據基礎。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">約會App使用者與非使用者（27項研究，共21,263人）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">使用滑動式約會App</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">非使用者</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">情緒困擾、外貌關注、身體意象困擾、行為失調、人際敏感度</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">社交媒體</span><span class="tag">身體意象</span><span class="tag">容貌焦慮</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42393202/" target="_blank" rel="noopener">閱讀原文 &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#2</span>
+            <span class="emoji-icon">🧠</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>虛擬同儕帶領之認知失諧飲食障礙預防計畫於有身體意象困擾年輕男性中的隨機對照試驗</h3>
+          <p class="journal-source">Body Image &middot; A randomized controlled trial comparing a virtual peer-led cognitive dissonance-based eating disorder prevention program to media advocacy in young adult men with body image concerns.</p>
+          <p>針對201名18-30歲有身體意象困擾的男性進行RCT，虛擬版Body Project: More than Muscles在肌肉內化指標上顯著優於媒體倡導對照組，兩組皆出現小至中度的飲食障礙與肌肉畸形症狀改善。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">18-30歲有身體意象困擾的年輕男性（N=201）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">虛擬同儕帶領的認知失諧介入</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">媒體倡導（時間注意力對照組）</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">飲食障礙症狀、肌肉畸形症狀、肌肉內化</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">飲食障礙</span><span class="tag">肌肉畸形</span><span class="tag">認知行為治療</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42392004/" target="_blank" rel="noopener">閱讀原文 &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#3</span>
+            <span class="emoji-icon">👨‍👩‍👧</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>父母終身憂鬱與焦慮對青少年身體不滿與飲食障礙症狀的影響：前瞻性研究</h3>
+          <p class="journal-source">Behavior Therapy &middot; Impact of Parent Lifetime Depression and Anxiety on Youth Body Dissatisfaction and Disordered Eating Symptoms During Adolescence.</p>
+          <p>前瞻性追蹤發現母親焦慮與憂鬱可預測12歲青少年的身體不滿，且12歲身體不滿中介了母親焦慮/憂鬱與15歲厭食症症狀的關聯，兒童對立違抗障礙則具有調節效應。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">社區兒童追蹤至青少年期（3歲測量父母、12-15歲測量青少年）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">父母終身憂鬱/焦慮病史（兒童3歲及9歲時評估）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">無父母心理病理</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">12歲及15歲身體不滿、15歲厭食症/暴食症症狀</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">兒少心理學</span><span class="tag">飲食障礙</span><span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42276686/" target="_blank" rel="noopener">閱讀原文 &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#4</span>
+            <span class="emoji-icon">📱</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>身體意象在媒體素養與年輕成人美容手術接受度關聯中的中介機制</h3>
+          <p class="journal-source">Aesthetic Plastic Surgery &middot; Body Image as a Mediating Mechanism in the Association Between Media Literacy and Acceptance of Cosmetic Surgery Among Young Adults.</p>
+          <p>橫斷研究（N=394）發現較高的媒體素養與較低的負面身體意象顯著相關，而身體意象部分中介了媒體素養與美容手術接受度之間的關聯，提升媒體素養可能間接降低對美容手術的接受度。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">18-24歲土耳其年輕成人（N=394）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">媒體素養（自變項，連續變數）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">低媒體素養</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">負面身體意象、美容手術接受度</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">社交媒體</span><span class="tag">身體意象</span><span class="tag">美容醫學</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42414648/" target="_blank" rel="noopener">閱讀原文 &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#5</span>
+            <span class="emoji-icon">🌈</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>香港跨性別者正念自我慈悲介入之可行性與接受度：混合方法先導研究</h3>
+          <p class="journal-source">BMC Psychology &middot; Feasibility and acceptability of a mindful self-compassion intervention for transgender and gender-diverse individuals in Hong Kong: a mixed-method pilot study.</p>
+          <p>六次正念自我慈悲介入顯著提升跨性別者的自尊、身體欣賞與自我慈悲，質性資料亦顯示高滿意度，為此高風險族群的身體意象介入提供初步實證支持。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">香港跨性別者（N=17，含跨男、跨女、流動性別）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">六次每週正念自我慈悲（MSC）團體介入</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">前測基線</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">內化污名、自尊、身體監視、身體羞恥、身體欣賞、憂鬱與焦慮症狀</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">性別研究</span><span class="tag">身體意象</span><span class="tag">認知行為治療</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42415211/" target="_blank" rel="noopener">閱讀原文 &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#6</span>
+            <span class="emoji-icon">🏫</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>結合社交媒體素養、自我慈悲與接納策略的青少年計畫：簇隨機試驗研究草案</h3>
+          <p class="journal-source">Gaceta Sanitaria &middot; Program on social media literacy, self-compassion and acceptance in adolescents: cluster randomized trial.</p>
+          <p>提出ImpactReel校園計畫，整合社交媒體素養、慈悲焦點治療與接納承諾治療，以簇隨機試驗設計評估其對青少年身體自尊與飲食障礙風險因子的預防效果，含12個月追蹤。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">西班牙國中一年級學生</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">ImpactReel七次課程（社交媒體素養+自我慈悲+接納策略）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">等候名單控制組</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">身體自尊（主要）、自我慈悲、外貌理想內化、飲食障礙風險、憂鬱症狀</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">社交媒體</span><span class="tag">兒少心理學</span><span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42392001/" target="_blank" rel="noopener">閱讀原文 &rarr;</a>
+          </div>
+        </div></div>
+
+  <div class="section"><div class="section-title"><span class="section-icon">&#128196;</span>其他值得關注的文獻</div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🩺</span>
+            <span class="utility-high utility-sm">高</span>
+          </div>
+          <h3>腹症兒童與青少年迴避/限制性進食障礙之盛行率與臨床相關性</h3>
+          <p class="journal-source">Journal of Eating Disorders</p>
+          <p>腹症兒童ARFID盛行率高達42.6%，合併顯著較低的體重BMI z分數、骨質疏鬆比率增加及生活品質下降。</p>
+          <div class="card-footer">
+            <span class="tag">飲食障礙</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42415218/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🥗</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>年輕女性對流行飲食的認知與身體意象之關聯評估</h3>
+          <p class="journal-source">Journal of Health, Population and Nutrition</p>
+          <p>土耳其580名女大學生的身體意象與大多數流行飲食的認知或實踐無顯著關聯，僅與排毒飲食及單一飲食有微弱名義關聯。</p>
+          <div class="card-footer">
+            <span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42415179/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">❤️</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>微創與開胸心臟手術在年輕成人中的比較：身體意象在健康相關生活品質中的角色</h3>
+          <p class="journal-source">Journal of Cardiothoracic Surgery</p>
+          <p>60歲以下心臟手術患者中，微創手術組對胸部外觀滿意度較高且整體身體意象傾向較佳，身體意象與生活品質正相關。</p>
+          <div class="card-footer">
+            <span class="tag">身體意象</span><span class="tag">可見差異/毀容</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42415162/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🏃</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>中國精英年輕成人運動員的運動意圖、正向身體意象與心理健康：納入性別差異的網路分析</h3>
+          <p class="journal-source">Scientific Reports</p>
+          <p>高斯與貝氏網路分析顯示快樂為最核心節點，身體欣賞僅在女性中與憂鬱呈負相關，男性則呈現運動意圖-快樂-身體欣賞的方向性連結。</p>
+          <div class="card-footer">
+            <span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42414541/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🦴</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>肉瘤的心理社會影響：挑戰與調適之後設合成</h3>
+          <p class="journal-source">Psycho-Oncology</p>
+          <p>40項質性研究後設合成揭示肉瘤經歷為累積性心理社會破壞，包含身體意象、功能與認同的持久改變，調適為動態持續過程。</p>
+          <div class="card-footer">
+            <span class="tag">可見差異/毀容</span><span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42412037/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🧬</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>Li-Fraumeni症候群個人与家庭心理治療團體之設計與實施：先導研究</h3>
+          <p class="journal-source">Psycho-Oncology</p>
+          <p>18-39歲者對家庭計畫、伴侶動態及身體意象與認同等主題的討論興趣顯著高於40歲以上者，團體模式獲得高滿意度。</p>
+          <div class="card-footer">
+            <span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42411914/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🌍</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>移民脈絡下手足喪失後的家庭動力：衣索比亞喪親手足的經驗</h3>
+          <p class="journal-source">European Journal of Psychotraumatology</p>
+          <p>衣索比亞裔以色列移民喪親手足經歷被剝奪的悲傷，受手足角色、移民身分及既有家庭破裂交織影響。</p>
+          <div class="card-footer">
+            <span class="tag">社會學</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42411701/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🎗️</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>女性乳癌患者負面身體意象質性研究之後設合成：知覺、污名與認同協商</h3>
+          <p class="journal-source">Medicine</p>
+          <p>19項研究後設合成歸納出四大主題：身體變化影響自我意象、面對他人評判的社會挑戰、重建正向自我意象、身體意象問題與親密關係。</p>
+          <div class="card-footer">
+            <span class="tag">身體意象</span><span class="tag">可見差異/毀容</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42410825/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🕊️</span>
+            <span class="utility-high utility-sm">高</span>
+          </div>
+          <h3>COPE介入用於戰爭影響青少年：增進生活品質與心理健康的簡短認知行為技能建構計畫</h3>
+          <p class="journal-source">Worldviews on Evidence-Based Nursing</p>
+          <p>黎巴嫩戰亂青少年接受七次COPE介入後，創傷、憂鬱與焦慮症狀大幅減少，生活品質與身體意象滿意度顯著改善。</p>
+          <div class="card-footer">
+            <span class="tag">認知行為治療</span><span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42410751/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🏥</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>教養方式與兒童醫院知覺：來自健康學齡兒童的見解</h3>
+          <p class="journal-source">Journal of Pediatric Nursing</p>
+          <p>權威教養型與學齡兒童較負面的醫院知覺顯著相關，特別是在恐懼與失控感及身體意象擔憂等面向。</p>
+          <div class="card-footer">
+            <span class="tag">兒少心理學</span><span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42407339/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🏳️‍🌈</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>依性自我標籤區分之性少數男性在飲食與身體意象困擾及社會文化壓力源上的差異</h3>
+          <p class="journal-source">Discover Mental Health</p>
+          <p>Bottom組的肌肉導向身體不滿顯著高於Top組及無標籤組，Versatile組的肌肉導向飲食障礙高於無標籤組，顯示性自我標籤可解釋組內異質性。</p>
+          <div class="card-footer">
+            <span class="tag">身體意象</span><span class="tag">飲食障礙</span><span class="tag">性別研究</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42406256/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🔥</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>燒傷照護中缺失的對話：親密關係與性</h3>
+          <p class="journal-source">Journal of Burn Care &amp; Research</p>
+          <p>評論文章呼籲燒傷復健應將性健康與更廣泛的親密關係納入照護模式，因燒傷倖存者面臨獨特的身體意象、可見疤痕與關係信心挑戰。</p>
+          <div class="card-footer">
+            <span class="tag">可見差異/毀容</span><span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42405701/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">📋</span>
+            <span class="utility-high utility-sm">高</span>
+          </div>
+          <h3>膀胱切除術照護路徑中的性復健：多專業團隊實用指引</h3>
+          <p class="journal-source">International Journal of Nursing Studies Advances</p>
+          <p>建構涵蓋術前強化、術後早期與晚期復健三階段的性復健架構，區分護理師主導、跨團隊共享與專科層級的行動，並整合造口特定親密計畫。</p>
+          <div class="card-footer">
+            <span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42404735/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">⚖️</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>「我永遠不會成功」：土耳其患者袖狀胃切除術前心理社會挑戰之歸納主題分析</h3>
+          <p class="journal-source">Journal of Patient Experience</p>
+          <p>術前七大主題包含身體意象、社會污名、家庭動力、情緒因應、減重心理障礙、手術決策及體重心理社會影響，情感性進食為常見因應機制。</p>
+          <div class="card-footer">
+            <span class="tag">身體意象</span><span class="tag">飲食障礙</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42404539/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🩻</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>推進神經源性膀胱的個人化照護：持續性尿路改道的案例</h3>
+          <p class="journal-source">Neurourology and Urodynamics</p>
+          <p>持續性尿路改道相比迴腸導尿，優先考慮不需外部器具的控尿，與許多神經泌尿患者的獨立性、身體意象及性福祉一致。</p>
+          <div class="card-footer">
+            <span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42403149/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🤰</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>探討孕婦社交外貌焦慮、負面評價恐懼、身體意象與個人保養及化妝品使用</h3>
+          <p class="journal-source">BMC Pregnancy and Childbirth</p>
+          <p>378名孕婦的研究發現，社交外貌焦慮、負面評價恐懼及孕期身體意象擔憂分數越高，使用個人保養與化妝品數量越多。</p>
+          <div class="card-footer">
+            <span class="tag">容貌焦慮</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42401928/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🔴</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>1064nm脈衝Nd:YAG雷射合併ALA-PDT治療腫脹性玫瑰斑</h3>
+          <p class="journal-source">Photodiagnosis and Photodynamic Therapy</p>
+          <p>鼻部腫脹性玫瑰斑合併雷射與光動力治療達到滿意臨床效果，此疾病因明顯外觀改變常造成嚴重情緒衝擊與社會污名。</p>
+          <div class="card-footer">
+            <span class="tag">皮膚科學</span><span class="tag">可見差異/毀容</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42401359/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">📌</span>
+            <span class="utility-high utility-sm">高</span>
+          </div>
+          <h3>癌症造口術後的身體意象：系統性文獻回顧</h3>
+          <p class="journal-source">Psycho-Oncology</p>
+          <p>10項量化研究（N=1,454）一致顯示造口組身體意象顯著差於非造口組，永久造口影響最大，暫時造口復位後可改善，心理社會變項具中介效應。</p>
+          <div class="card-footer">
+            <span class="tag">身體意象</span><span class="tag">可見差異/毀容</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42400471/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🔄</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>ADHD與厭食症的交集：ADHD如何塑造飲食障礙經驗的質性探索</h3>
+          <p class="journal-source">Journal of Eating Disorders</p>
+          <p>15名共病ADHD與厭食症成人訪談揭示兩者特徵的重疊與工具化運用，ADHD相關系統性因素導致的深層羞恥感可能預置厭食症的發展。</p>
+          <div class="card-footer">
+            <span class="tag">飲食障礙</span><span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42400097/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">👩</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>探索永久造口婦女的身體意象經驗</h3>
+          <p class="journal-source">Journal of Health Psychology</p>
+          <p>12名永久造口婦女的主題分析顯示三大主題：適應新現實、缺乏代表性、向前邁進，所有參與者均認為造口對身體意象有負面影響。</p>
+          <div class="card-footer">
+            <span class="tag">身體意象</span><span class="tag">可見差異/毀容</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42397791/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">💊</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>複合口服避孕藥與多內分泌代謝卵巢症候群婦女憂鬱症的關聯：比較性橫斷研究</h3>
+          <p class="journal-source">BMC Women's Health</p>
+          <p>PMOS婦女憂鬱症盛行率高達約36%，COC使用者與非使用者無顯著差異，低睪固酮水準為憂鬱症的顯著預測因子。</p>
+          <div class="card-footer">
+            <span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42393692/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">⚠️</span>
+            <span class="utility-high utility-sm">高</span>
+          </div>
+          <h3>超越失禁：肛門瘻管手術後性功能障礙的系統性回顧與後設分析</h3>
+          <p class="journal-source">Journal of Gastrointestinal Surgery</p>
+          <p>首次量化手術後性功能的性別差異：男性功能顯著改善，女性幾無改善甚至惡化；鬆弛式掛線造成女性性功能嚴重損害與雙性別的身體意象迴避，79%患者未接受術前性諮商。</p>
+          <div class="card-footer">
+            <span class="tag">身體意象</span><span class="tag">可見差異/毀容</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42392439/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">📏</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>身體欣賞量表第二版及其簡版在丹麥青年（15-25歲）中的驗證與次組群分數比較</h3>
+          <p class="journal-source">Body Image</p>
+          <p>BAS-2與BAS-2SF在2005名丹麥青年中具備單維度結構、良好內部一致性及跨性別與年齡組的嚴格測量不變性，男性身體欣賞最高，其他性別認同者最低。</p>
+          <div class="card-footer">
+            <span class="tag">測量工具</span><span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42392005/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🧠</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>纖維肌痛症的身體自我：身體意象、身體表徵與內感受功能障礙的系統性回顧與後設分析</h3>
+          <p class="journal-source">Psychiatry and Clinical Neurosciences</p>
+          <p>25項研究的後設分析顯示纖維肌痛症患者身體意象、身體覺察與身體自尊顯著受損（合併效應量=0.99），與疼痛強度正相關、與生活品質負相關。</p>
+          <div class="card-footer">
+            <span class="tag">神經科學</span><span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42389825/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">✂️</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>性別肯定乳房切除術後疤痕的患者知覺：橫斷研究</h3>
+          <p class="journal-source">JPRAS Open</p>
+          <p>86%受訪者不因疤痕感到尷尬，81%不反感疤痕，主題分析顯示疤痕作為驕傲與肯定的來源、外在知覺與污名、及對手術的接受等五個面向。</p>
+          <div class="card-footer">
+            <span class="tag">性別研究</span><span class="tag">可見差異/毀容</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42389221/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">📈</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>代謝與減重手術後BODY-Q健康相關生活品質量表之世代基準百分位數</h3>
+          <p class="journal-source">Obesity Surgery</p>
+          <p>建立391名患者術前至術後五年的六個BODY-Q量表百分位數，提供身體意象、身體功能、心理社會及性福祉等面向的術後解讀參考框架。</p>
+          <div class="card-footer">
+            <span class="tag">測量工具</span><span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42384100/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">💪</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>Fit Body Scale在伊朗成人中評估肌肉導向身體不滿的心理測量驗證</h3>
+          <p class="journal-source">Scientific Reports</p>
+          <p>女性版與男性版Fit Body Scale在893名伊朗成人中具備滿意的重測信度、收斂效度與效標關聯效度，為測量肌肉理想身體不滿提供跨文化驗證。</p>
+          <div class="card-footer">
+            <span class="tag">測量工具</span><span class="tag">肌肉畸形</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42380255/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">📢</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>身體羞辱與女性心理健康：性別平等的公共衛生挑戰</h3>
+          <p class="journal-source">Health Science Reports</p>
+          <p>回顧文獻指出WHO與APA已正式將外貌相關困擾列為心理健康決定因素，CBT、慈悲焦點治療及Body Project等介入具實證效果，但非洲情境研究嚴重不足。</p>
+          <div class="card-footer">
+            <span class="tag">公共衛生</span><span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42376360/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🎀</span>
+            <span class="utility-high utility-sm">高</span>
+          </div>
+          <h3>乳房重建對乳癌倖存者性功能與身體意象的影響：系統性文獻回顧</h3>
+          <p class="journal-source">JPRAS Open</p>
+          <p>27項研究（超過25,000人）顯示乳房重建組的性功能與身體意象顯著優於單純切除組，自體重建的長期滿意度優於植體重建，但術前性健康諮商普遍不足。</p>
+          <div class="card-footer">
+            <span class="tag">身體意象</span><span class="tag">可見差異/毀容</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42376013/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">👩‍⚕️</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>中國護理人員體重狀態自我知覺及其影響因素：多中心橫斷調查</h3>
+          <p class="journal-source">Nursing &amp; Health Sciences</p>
+          <p>5786名中國護理人員的體重自我知覺與BMI一致性極低（Kappa=0.364），整體高估率達35.66%，可能導致不當的體重控制指導。</p>
+          <div class="card-footer">
+            <span class="tag">身體意象</span><span class="tag">公共衛生</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42360020/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">⚡</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>甲基安非他命用於體重控制：線上敘事的扎根理論分析</h3>
+          <p class="journal-source">Drug and Alcohol Review</p>
+          <p>扎根理論分析揭示體重動機使用甲基安非他命的過程：長期身體不滿與飲食障礙脆弱性、同儕正當化、風險-報酬評估、快速減重強化，最終走向羞恥與後悔。</p>
+          <div class="card-footer">
+            <span class="tag">飲食障礙</span><span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42357936/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🗺️</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>繪製頭頸癌患者的放射治療旅程圖：質性研究</h3>
+          <p class="journal-source">Asia-Pacific Journal of Oncology Nursing</p>
+          <p>患者旅程圖揭示四大主題，其中自我認同破壞與社交退縮由面部外觀改變與口腔進食功能障礙引發，身體意象困擾導致社會孤立。</p>
+          <div class="card-footer">
+            <span class="tag">可見差異/毀容</span><span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42318597/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🫁</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>跨男性胸部男性化手術後患者報告結果：前瞻性研究</h3>
+          <p class="journal-source">JPRAS Open</p>
+          <p>44名跨男性患者術後6個月所有BODY-Q外觀與生活品質面向均顯著改善，胸部滿意度從24%升至82%，心理福祉從24%升至62%。</p>
+          <div class="card-footer">
+            <span class="tag">性別研究</span><span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42306180/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🧩</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>暴露於厭惡刺激時大腦功能的動態網路重組</h3>
+          <p class="journal-source">Obesity</p>
+          <p>肥胖組在觀看腐敗食物影片時視覺網路-背側注意網路-皮質下網路整合顯著低於對照組，此整合度與身體意象困擾正相關、與渴望負相關。</p>
+          <div class="card-footer">
+            <span class="tag">神經科學</span><span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42289309/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div></div>
+
+  <div class="topic-section section"><div class="section-title"><span class="section-icon">&#128202;</span>主題分佈</div>
+            <div class="topic-row">
+              <span class="topic-name">身體意象</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+              <span class="topic-count">25</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">可見差異/毀容</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:32%"></div></div>
+              <span class="topic-count">8</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">飲食障礙</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:24%"></div></div>
+              <span class="topic-count">6</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">社交媒體</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:16%"></div></div>
+              <span class="topic-count">4</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">性別研究</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:12%"></div></div>
+              <span class="topic-count">3</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">測量工具</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:12%"></div></div>
+              <span class="topic-count">3</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">兒少心理學</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:12%"></div></div>
+              <span class="topic-count">3</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">容貌焦慮</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:8%"></div></div>
+              <span class="topic-count">2</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">神經科學</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:8%"></div></div>
+              <span class="topic-count">2</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">認知行為治療</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:8%"></div></div>
+              <span class="topic-count">2</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">肌肉畸形</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:8%"></div></div>
+              <span class="topic-count">2</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">公共衛生</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:8%"></div></div>
+              <span class="topic-count">2</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">美容醫學</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:4%"></div></div>
+              <span class="topic-count">1</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">皮膚科學</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:4%"></div></div>
+              <span class="topic-count">1</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">社會學</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:4%"></div></div>
+              <span class="topic-count">1</span>
+            </div></div>
+
+  <div class="keywords-section section"><div class="section-title"><span class="section-icon">&#127991;</span>關鍵字</div><div class="keywords"><span class="keyword">約會App</span><span class="keyword">媒體素養</span><span class="keyword">認知失諧介入</span><span class="keyword">正念自我慈悲</span><span class="keyword">身體意象中介</span><span class="keyword">前瞻性預測</span><span class="keyword">造口身體意象</span><span class="keyword">性別肯定手術</span></div></div>
+
+  <div class="banner-section">
+    <a href="https://www.leepsyclinic.com/" class="banner-link" target="_blank" rel="noopener">
+      <span class="banner-icon">&#127973;</span>
+      <div>
+        <div class="banner-name">李政洋身心診所首頁</div>
+      </div>
+      <span class="banner-arrow">&rarr;</span>
+    </a>
+  </div>
+
+  <div class="banner-section">
+    <a href="https://blog.leepsyclinic.com/" class="banner-link" target="_blank" rel="noopener">
+      <span class="banner-icon">&#128231;</span>
+      <div>
+        <div class="banner-name">訂閱電子報</div>
+      </div>
+      <span class="banner-arrow">&rarr;</span>
+    </a>
+  </div>
+
+  <div class="banner-section">
+    <a href="https://buymeacoffee.com/CYlee" class="banner-link" target="_blank" rel="noopener">
+      <span class="banner-icon">&#9749;</span>
+      <div>
+        <div class="banner-name">Buy Me a Coffee</div>
+      </div>
+      <span class="banner-arrow">&rarr;</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：GLM-5-Turbo</span>
+    <span><a href="https://github.com/u8901006/appearance-anxiety">GitHub</a></span>
+  </footer>
+</div>
+</body>
+</html>
