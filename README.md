@@ -10,13 +10,13 @@ https://u8901006.github.io/appearance-anxiety/
 
 1. **GitHub Actions** 每天 GMT+8 17:55 自動執行
 2. **PubMed E-utilities API** 抓取過去 7 天的最新文獻
-3. **Zhipu GLM-5-Turbo** AI 分析文獻，生成繁體中文摘要與分類
+3. **NVIDIA Nemotron 3 Super** AI 分析文獻，生成繁體中文摘要與分類
 4. 部署至 **GitHub Pages**
 
 ## 技術規格
 
 - Node.js 24
-- AI 模型：GLM-5-Turbo（fallback：GLM-4.7 → GLM-4.7-Flash）
+- AI 模型：NVIDIA Nemotron 3 Super（fallback：NVIDIA Nemotron 3 Nano）
 - Token 上限：50,000
 - API 逾時：480 秒
 - 增強型 JSON 容錯處理

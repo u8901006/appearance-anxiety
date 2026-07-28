@@ -90,15 +90,15 @@ jobs:
             echo "No papers found, will generate empty report"
           fi
 
-      - name: Generate report with Zhipu AI
+      - name: Generate report with NVIDIA AI
         if: steps.check.outputs.exists == 'false'
         env:
-          ZHIPU_API_KEY: ${{ secrets.ZHIPU_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
         run: |
           node scripts/generate_report.js \
             --input papers.json \
             --output docs/appearance-anxiety-${{ steps.date.outputs.target }}.html \
-            --api-key "$ZHIPU_API_KEY"
+            --api-key "$NVIDIA_API_KEY"
         timeout-minutes: 15
 
       - name: Generate index page
