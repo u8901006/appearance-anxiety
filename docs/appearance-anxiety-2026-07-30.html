@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Appearance Anxiety &middot; 容貌焦慮研究文獻日報 &middot; 2026年7月30日</title>
+<meta name="description" content="2026年7月30日 容貌焦慮研究文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(140,79,43,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(140,79,43,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(61,36,15,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(61,36,15,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff7f0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #5a7a3a; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,122,58,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(118,100,83,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff7f0; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(140,79,43,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #c47a4a); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .banner-section { margin-top: 36px; animation: fadeUp 0.5s ease 0.4s both; }
+  .banner-link { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(61,36,15,0.04); }
+  .banner-link:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .banner-icon { font-size: 28px; flex-shrink: 0; }
+  .banner-name { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .banner-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  .banner-desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">&#129300;</div>
+    <div class="header-text">
+      <h1>Appearance Anxiety &middot; 容貌焦慮研究文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">&#128197; 2026年7月30日</span>
+        <span class="badge badge-count">&#128218; 13 篇文獻</span>
+        <span class="badge badge-source">Powered by PubMed + NVIDIA AI</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>&#128200; 今日文獻趨勢</h2>
+    <p class="summary-text">研究聚焦於青少年體型不滿、情緒調節與生理發展的交互作用，以及使用 ACT 訓練與 Sirolimus 等新介入改善外觀與生活品質，顯示出不少具有臨床潛力的實證與治療方案。</p>
+  </div>
+
+  <div class="section"><div class="section-title"><span class="section-icon">&#11088;</span>今日精選 TOP Picks</div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#1</span>
+            <span class="emoji-icon">🧠</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>青少年體型不滿、情緒調節與發育關聯系統性回顧</h3>
+          <p class="journal-source">Journal of adolescence &middot; Body, Emotions, and Hormones: A Systematic Review of Body Dissatisfaction, Emotion Regulation, and Puberty in Adolescence</p>
+          <p>青春期因外觀形象與理想形象的差距而產生體型不滿，且與情緒調節與激素變化密切相關，長期的不適會影響心理健康，建議需以發展性理論加強介入。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">6-18 歲青少年</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">系統性回顧（含 103 篇研究）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">比較不同發育階段與情緒調節的關聯性</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">證實青春期發育較早與較多情緒問題相關，體型不滿與情緒調節互影響</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">身體意象</span><span class="tag">青少年</span><span class="tag">情緒調節</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42528401/" target="_blank" rel="noopener">閱讀原文 &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#2</span>
+            <span class="emoji-icon">🗣️</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>容貌焦慮與焦慮語音的擴展式「Relating Therapy」可行性探索</h3>
+          <p class="journal-source">Behavioural and cognitive psychotherapy &middot; Relating Therapy for the Anorexic Voice: Exploring the Feasibility of an Extended Version</p>
+          <p>聚焦於 Anorexic Voice 的干預，證明擴展至 24 次可行且能顯著提升自尊與減少進食焦慮，顯示其在治療難度高的族群中潛在價值。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">AN 患者</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">擴展版 Relating Therapy（24 次）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">傳統 16 次版本</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">參與者自評生活參與度提升、聲音干擾減弱、進食情緒改善</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">容貌焦慮</span><span class="tag">社交焦慮</span><span class="tag">認知行為治療</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42528100/" target="_blank" rel="noopener">閱讀原文 &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#3</span>
+            <span class="emoji-icon">💉</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>面部/胸部手術後體像與性功能的整合性評估框架</h3>
+          <p class="journal-source">International journal of nursing studies advances &middot; Sexual rehabilitation across the cystectomy care pathway: pragmatic guidance for multidisciplinary teams; a narrative review</p>
+          <p>系統整合胸導管手術後的性功能與體像需求，提出可操作的多階段性重建指南，提升患者的性健康與生活品質。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">接受胸導管切除術的患者</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">性重建指南（多階段）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">現有缺乏系統性方案</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">改善性功能評估、減少情緒困擾，並提供標準化治療路徑</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">性別研究</span><span class="tag">性健康</span><span class="tag">手術後</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42404735/" target="_blank" rel="noopener">閱讀原文 &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#4</span>
+            <span class="emoji-icon">🧪</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>膠原酶抑制劑（Sirolimus）在難治性頜部血管瘤中的成功案例</h3>
+          <p class="journal-source">Oral and maxillofacial surgery &middot; Successful management of lymphangioma circumscriptum of the tongue with sirolimus monotherapy</p>
+          <p>首次以 Sirolimus 單獨治療舌部血管瘤，顯著縮小腫瘤、改善功能與外觀，證明生物學阻斷可替代高危手術。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">兒童與青少年</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Sirolimus 單藥療法</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">傳統手術切除</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">腫瘤完全消失、無副作用、功能恢復正常</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">皮膚科學</span><span class="tag">新藥</span><span class="tag">vascular malformation</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42503529/" target="_blank" rel="noopener">閱讀原文 &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#5</span>
+            <span class="emoji-icon">🎧</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>接受面向男性的 ACT 音訊導向親密關係介入的研究成果</h3>
+          <p class="journal-source">British journal of health psychology &middot; Loving ACTion: An evaluation of an ACT-based audio podcast intervention focussed on romantic and intimate relationships for adults with visible differences</p>
+          <p>透過 71 位有明顯外觀差異的成人，使用 ACT 線上音訊介入，顯著降低外觀相關的情緒困擾，提升心理彈性與自我同情，顯示可行且具衝擊力。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">有外觀差異的成人</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">ACT 檔案導向情侶關係介入（12 週）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">基線與追蹤測試比較</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">外觀焦慮、心理彈性、生活參與度均顯著改善</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">容貌焦慮</span><span class="tag">認知行為治療</span><span class="tag">性別研究</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42518184/" target="_blank" rel="noopener">閱讀原文 &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#6</span>
+            <span class="emoji-icon">📊</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>用於義務矯正的 BODY‑Q‑7D 患者報告測量工具的驗證研究</h3>
+          <p class="journal-source">Obesity (Silver Spring, Md.) &middot; BODY-Q-7D Measures Consensus-Based Patient-Reported Outcomes for the Management of Obesity Treatment</p>
+          <p>在全球共123 位受試者中建立的 7 項度量工具，具高信度與建構效度，可作為肥胖治療進展與患者滿意度的標準化指標。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">肥胖治療接受者</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">BODY‑Q‑7D 測量工具</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">多項 psychometric 驗證</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">信度 0.80+、可預測性與反應變化均顯著</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">測量工具</span><span class="tag">肥胖</span><span class="tag">公共衛生</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42493766/" target="_blank" rel="noopener">閱讀原文 &rarr;</a>
+          </div>
+        </div></div>
+
+  <div class="section"><div class="section-title"><span class="section-icon">&#128196;</span>其他值得關注的文獻</div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🌎</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>Indigenous body image amid rapid social and economic change: A reflexive thematic analysis of Wayuu narratives</h3>
+          <p class="journal-source">Body image</p>
+          <p>Wayuu 人面臨全球媒體與內部族群期待的雙重壓力，文化認同與數位媒體的交互作用塑造了複雜的體像感受。</p>
+          <div class="card-footer">
+            <span class="tag">身體意象</span><span class="tag">社會學</span><span class="tag">社會媒體</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42520348/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">💬</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>Perceived communication barriers with spouses among young adult patients with cancer and their association with psychological distress</h3>
+          <p class="journal-source">Asia-Pacific journal of oncology nursing</p>
+          <p>年輕癌症患者在伴侶溝通上出現明顯障礙，與更高的抑鬱與焦慮有關，凸顯溝通的關鍵性。</p>
+          <div class="card-footer">
+            <span class="tag">認知行為治療</span><span class="tag">性別研究</span><span class="tag">公共衛生</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42436847/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🕐</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>Postmastectomy chest wall radiotherapy for breast cancer (SUPREMO): 5-year quality-of-life results from a randomised, controlled, phase 3 trial</h3>
+          <p class="journal-source">The Lancet. Oncology</p>
+          <p>胸壁放射治療在 5 年 QOL 評估中未顯著降低生活品質，且對整體生存無負面影響，證實其安全性。</p>
+          <div class="card-footer">
+            <span class="tag">美容醫學</span><span class="tag">癌症</span><span class="tag">放射治療</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42508432/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🔍</span>
+            <span class="utility-high utility-sm">高</span>
+          </div>
+          <h3>Significant clinical, functional and radiological response with sirolimus in refractory complex orbital venolymphatic malformation</h3>
+          <p class="journal-source">BMJ case reports</p>
+          <p>使用 Sirolimus 成功治療難以手術的眼眶血管瘤，恢復視力與外觀，展示新藥在複雜畸形中的潛力。</p>
+          <div class="card-footer">
+            <span class="tag">皮膚科學</span><span class="tag">新藥</span><span class="tag">vascular malformation</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42527033/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🗣️</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>Translating and culturally adapting the GENDER-Q for patients undergoing masculinizing chest surgery</h3>
+          <p class="journal-source">Journal of plastic, reconstructive &amp; aesthetic surgery : JPRAS</p>
+          <p>GENDER-Q 成功翻譯成德文並驗證，顯示高度信度與響應度，可作為跨性別胸部手術後評估的標準工具。</p>
+          <div class="card-footer">
+            <span class="tag">性別研究</span><span class="tag">測量工具</span><span class="tag">可見差異/毀容</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42401040/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🩹</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>Body appreciation and psychosocial indicators in patients with keloids, hypertrophic scars, and burn scars</h3>
+          <p class="journal-source">Scars, burns &amp; healing</p>
+          <p>不同類型疤痕在心理影響上相似，但燒創疤痕因外觀與功能受限而更易出現焦慮與抑鬱，提示需差異化介入。</p>
+          <div class="card-footer">
+            <span class="tag">容貌焦慮</span><span class="tag">皮膚科學</span><span class="tag">傷害與修復</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42502838/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">⚡</span>
+            <span class="utility-high utility-sm">高</span>
+          </div>
+          <h3>Bleomycin and reversible electroporation for the treatment of vascular malformations: A New Zealand tertiary centre experience</h3>
+          <p class="journal-source">Journal of medical imaging and radiation oncology</p>
+          <p>結合布林塞門與電穿刺技術可顯著改善血管瘤的臨床與影像表現，縮短治療次數，副作用低。</p>
+          <div class="card-footer">
+            <span class="tag">皮膚科學</span><span class="tag">新藥</span><span class="tag">vascular malformation</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42502891/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div></div>
+
+  <div class="topic-section section"><div class="section-title"><span class="section-icon">&#128202;</span>主題分佈</div>
+            <div class="topic-row">
+              <span class="topic-name">身體意象</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+              <span class="topic-count">7</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">容貌焦慮</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:43%"></div></div>
+              <span class="topic-count">3</span>
+            </div></div>
+
+  <div class="keywords-section section"><div class="section-title"><span class="section-icon">&#127991;</span>關鍵字</div><div class="keywords"><span class="keyword">容貌焦慮</span><span class="keyword">青少年</span><span class="keyword">臨床介入</span><span class="keyword">公共衛生</span><span class="keyword">測量工具</span></div></div>
+
+  <div class="banner-section">
+    <a href="https://www.leepsyclinic.com/" class="banner-link" target="_blank" rel="noopener">
+      <span class="banner-icon">&#127973;</span>
+      <div>
+        <div class="banner-name">李政洋身心診所首頁</div>
+      </div>
+      <span class="banner-arrow">&rarr;</span>
+    </a>
+  </div>
+
+  <div class="banner-section">
+    <a href="https://blog.leepsyclinic.com/" class="banner-link" target="_blank" rel="noopener">
+      <span class="banner-icon">&#128231;</span>
+      <div>
+        <div class="banner-name">訂閱電子報</div>
+      </div>
+      <span class="banner-arrow">&rarr;</span>
+    </a>
+  </div>
+
+  <div class="banner-section">
+    <a href="https://buymeacoffee.com/CYlee" class="banner-link" target="_blank" rel="noopener">
+      <span class="banner-icon">&#9749;</span>
+      <div>
+        <div class="banner-name">Buy Me a Coffee</div>
+      </div>
+      <span class="banner-arrow">&rarr;</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3-super-120b-a12b</span>
+    <span><a href="https://github.com/u8901006/appearance-anxiety">GitHub</a></span>
+  </footer>
+</div>
+</body>
+</html>
