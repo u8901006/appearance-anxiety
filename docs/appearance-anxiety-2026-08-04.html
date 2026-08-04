@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Appearance Anxiety &middot; 容貌焦慮研究文獻日報 &middot; 2026年8月4日</title>
+<meta name="description" content="2026年8月4日 容貌焦慮研究文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(140,79,43,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(140,79,43,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(61,36,15,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(61,36,15,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff7f0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #5a7a3a; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,122,58,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(118,100,83,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff7f0; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(140,79,43,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #c47a4a); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .banner-section { margin-top: 36px; animation: fadeUp 0.5s ease 0.4s both; }
+  .banner-link { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(61,36,15,0.04); }
+  .banner-link:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .banner-icon { font-size: 28px; flex-shrink: 0; }
+  .banner-name { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .banner-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  .banner-desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">&#129300;</div>
+    <div class="header-text">
+      <h1>Appearance Anxiety &middot; 容貌焦慮研究文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">&#128197; 2026年8月4日</span>
+        <span class="badge badge-count">&#128218; 15 篇文獻</span>
+        <span class="badge badge-source">Powered by PubMed + NVIDIA AI</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>&#128200; 今日文獻趨勢</h2>
+    <p class="summary-text">本日文獻聚焦於身體形象與外觀相關議題，特別是針對容貌焦慮、身體意象與社交媒體影響的研究，顯示出臨床學介入與測量工具發展的重要性。</p>
+  </div>
+
+  <div class="section"><div class="section-title"><span class="section-icon">&#11088;</span>今日精選 TOP Picks</div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#1</span>
+            <span class="emoji-icon">🧠</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>SOCS-A: 自我導向外觀比較量表的發展與驗證</h3>
+          <p class="journal-source">Body image &middot; Development and Psychometric Evaluation of the Self-Oriented Comparison Scale for Appearance (SOCS-A)</p>
+          <p>自我導向外觀比較與負面身體形象、厭食行為密切相關，向上比較呈惡化作用，向下比較則較為中性。此量表可精確捕捉不同比較方向的心理特徵。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">美國社區成人（女性49%、男性48.5%、非二元2.5%）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">發展與驗證11項自我導向外觀比較量表（SOCS-A）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">對照組未提及，主要為內部驗證</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">證實二因素結構（向上、向下），具高信度與效度</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">測量工具</span><span class="tag">容貌焦慮</span><span class="tag">身體意象</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42546537/" target="_blank" rel="noopener">閱讀原文 &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#2</span>
+            <span class="emoji-icon">📱</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>Appearance‑Related Social Media Content and Its Bidirectional Links to Body Image and Disordered Eating Urges</h3>
+          <p class="journal-source">Body image &middot; Inspiration or Instigation? Bidirectional Links between Body‑Focused Content, Body Image, and Disordered Eating Urges</p>
+          <p>社交媒體的外觀導向內容會即時改變使用者的身體滿意度與進食衝動，顯示出不同內容類型對情緒與行為的異なる影響。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">大學生（78.3%女性）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">六次/day、為期七天的生態瞬間抽樣測量</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">測量寬容、fitspiration、fatspiration等不同內容的影響</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">thinspiration提升身體不滿，fitspiration降低欣賞感，fatspiration提升運動慾望</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">社交媒體</span><span class="tag">身體意象</span><span class="tag">認知行為治療</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42537570/" target="_blank" rel="noopener">閱讀原文 &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#3</span>
+            <span class="emoji-icon">📊</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>BODY‑Q‑7D 共識式患者報告結局量表：肥胖治療的量測新框架</h3>
+          <p class="journal-source">Obesity (Silver Spring, Md.) &middot; BODY‑Q‑7D Measures Consensus‑Based Patient‑Reported Outcomes for the Management of Obesity Treatment</p>
+          <p>針對肥胖治療開發的七項患者報告結局量表，具強度信度與建構效度，可提供跨領域的標準化評估。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">肥胖治療接受者（線上國際樣本）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">開發與驗證BODY‑Q‑7D量表</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">對照於現有非特定偏好度量</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Rasch分析導出7項量表，適配度優良</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">測量工具</span><span class="tag">肥胖</span><span class="tag">公共衛生</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42493766/" target="_blank" rel="noopener">閱讀原文 &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#4</span>
+            <span class="emoji-icon">🎧</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>Loving ACTion: 以ACT為基礎的音樂導向親密關係介入在可見差異族群中的評估</h3>
+          <p class="journal-source">British journal of health psychology &middot; Loving ACTion: An evaluation of an ACT‑based audio podcast intervention for romantic and intimate relationships in adults with visible differences</p>
+          <p>透過線上播客介入提升外觀相關情緒困擾、心理彈性與自我慈惠，顯示出在可見差異族群中具有可行性與正向效果。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">有外觀差異的成年人（N=71）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">12週ACT音樂導向親密關係課程（線上）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">前測、後測與2月追蹤</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">外觀相關痛苦顯著下降，心理彈性與生活價值提升</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">心理治療</span><span class="tag">性別研究</span><span class="tag">可見差異</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42518184/" target="_blank" rel="noopener">閱讀原文 &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#5</span>
+            <span class="emoji-icon">⚧️</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>GENDER‑Q 中文版文化適配與可行性檢驗—跨性別胸部手術患者的應用</h3>
+          <p class="journal-source">Journal of plastic, reconstructive &amp; aesthetic surgery : JPRAS &middot; Translation and Cultural Adaptation of the GENDER‑Q with Pilot Implementation among Patients Undergoing Masculinizing Chest Surgery</p>
+          <p>德文版GENDER‑Q完成文化適配，於跨性別胸部手術患者中展現高接受度與顯著改善效果，證明其測量效用具可推廣性。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">接受胸部男性化手術的跨性別成人（N=13）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">德文GENDER‑Q量表評估與回應</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">基線與術後改變比較</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">胸部外觀、身體形象與性別不和諦顯著提升</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">性別研究</span><span class="tag">測量工具</span><span class="tag">可見差異</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42401040/" target="_blank" rel="noopener">閱讀原文 &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#6</span>
+            <span class="emoji-icon">🩺</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>Postmastectomy Chest Wall Radiotherapy (SUPREMO) 5年品質生活結果</h3>
+          <p class="journal-source">The Lancet. Oncology &middot; Postmastectomy Chest Wall Radiotherapy for Breast Cancer (SUPREMO): 5‑Year Quality‑of‑Life Results from a Randomised, Controlled, Phase 3 Trial</p>
+          <p>胸壁放射治療在5年後未顯著降低全球品質生活得分，但對特定症狀（如胸部症狀）有影響，為臨床決策提供長期證據。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text"> intermediate‑risk 乳癌患者（全球1691例）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">胸壁放射（40‑50Gy） vs 無放射</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">對照組與介入組比較</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">全域品質生活、疲勞與身體形象等指標差異不顯著</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">美容醫學</span><span class="tag">公共衛生</span><span class="tag">測量工具</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42508432/" target="_blank" rel="noopener">閱讀原文 &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#7</span>
+            <span class="emoji-icon">🩸</span>
+            <span class="utility-low">低實用性</span>
+          </div>
+          <h3>體重減輕後的非典型厭食神經症：胃切除術與Semaglutide/Tirzepatide治療的個案</h3>
+          <p class="journal-source">Internal medicine (Tokyo, Japan) &middot; Atypical Anorexia Nervosa Developed in a Patient with Severe Obesity and Type 2 Diabetes Following Sleeve Gastrectomy and Postoperative Treatment with Semaglutide and Tirzepatide</p>
+          <p>減重手術後出現非典型厭食症病例，顯示快速体重下降與體像恐懼可在特定藥物刺激下出現。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">60歲日本女性，BMI 47→20.9</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">胃切除術後使用Semaglutide與Tirzepatide</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">術前術後比較</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">發展出DSM‑5定義的非典型AN症狀</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">飲食障礙</span><span class="tag">肥胖</span><span class="tag">神經科學</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42543696/" target="_blank" rel="noopener">閱讀原文 &rarr;</a>
+          </div>
+        </div></div>
+
+  <div class="section"><div class="section-title"><span class="section-icon">&#128196;</span>其他值得關注的文獻</div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🦠</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>Giant anogenital condyloma acuminata with extragenital involvement in an immunocompetent host</h3>
+          <p class="journal-source">BMJ case reports</p>
+          <p>罕見巨型外生性尖疣伴遠端部位受累，需早期手術與長期追蹤。</p>
+          <div class="card-footer">
+            <span class="tag">皮膚科學</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42547256/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🔬</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>NRAS mutation in a central conducting lymphatic anomaly and PPFIBP1::ROS1 fusion in a Gorham‑stout disease patient</h3>
+          <p class="journal-source">Human molecular genetics</p>
+          <p>發現NRAS與PPFIBP1::ROS1基因突變，支持血管瘤相關疾病的共同分子機制。</p>
+          <div class="card-footer">
+            <span class="tag">神經科學</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42544506/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🩸</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>Atypical Anorexia Nervosa Developed in a Patient with Severe Obesity and Type 2 Diabetes Following Sleeve Gastrectomy and Postoperative Treatment with Semaglutide and Tirzepatide</h3>
+          <p class="journal-source">Internal medicine (Tokyo, Japan)</p>
+          <p>減重手術後出現非典型厭食症，提示需關注手術後的身體形象與食慾變化。</p>
+          <div class="card-footer">
+            <span class="tag">飲食障礙</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42543696/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">📚</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>The Weight of the Number: Perceptions and Practices Surrounding Expected Body Weight Disclosure in Eating Disorder Treatment</h3>
+          <p class="journal-source">The International journal of eating disorders</p>
+          <p>探討EBW討論對患者焦慮與配合度的影響，建議制定標準指導方針。</p>
+          <div class="card-footer">
+            <span class="tag">飲食障礙</span><span class="tag">測量工具</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42543257/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🤰</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>Weight stigma and the development of body image resilience during preconception, pregnancy and postpartum: A qualitative interview study</h3>
+          <p class="journal-source">Health psychology open</p>
+          <p>探討重訊息對產前及產後女性身體形象韌性的影響與應對策略。</p>
+          <div class="card-footer">
+            <span class="tag">身體意象</span><span class="tag">公共衛生</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42539952/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🦽</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>Causal treatment effects of gait‑analysis‑informed surgery on the Gait Outcomes Assessment List in children with cerebral palsy</h3>
+          <p class="journal-source">Developmental medicine and child neurology</p>
+          <p>基於走勢分析的手術提升 gait外觀與功能，但功能提升程度較為有限。</p>
+          <div class="card-footer">
+            <span class="tag">兒少心理學</span><span class="tag">測量工具</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42533287/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">👪</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>Reproductive decision‑making in the context of inheritable conditions that affect appearance</h3>
+          <p class="journal-source">Journal of community genetics</p>
+          <p>探討外觀遺傳性疾病對生育決策的影響與決策策略。</p>
+          <div class="card-footer">
+            <span class="tag">社會學</span><span class="tag">可見差異</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42533209/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🔪</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>Impact of prior sexual trauma on patient experience and comfort in breast cancer radiation therapy</h3>
+          <p class="journal-source">Supportive care in cancer : official journal of the Multinational Association of Supportive Care in Cancer</p>
+          <p>先前性創傷與輻射治療過程中的不適感呈顯著相關，建議提供彈性照護。</p>
+          <div class="card-footer">
+            <span class="tag">性別研究</span><span class="tag">公共衛生</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42533207/" target="_blank" rel="noopener">PubMed &rarr;</a>
+          </div>
+        </div></div>
+
+  <div class="topic-section section"><div class="section-title"><span class="section-icon">&#128202;</span>主題分佈</div>
+            <div class="topic-row">
+              <span class="topic-name">身體意象</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+              <span class="topic-count">5</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">容貌焦慮</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:60%"></div></div>
+              <span class="topic-count">3</span>
+            </div></div>
+
+  <div class="keywords-section section"><div class="section-title"><span class="section-icon">&#127991;</span>關鍵字</div><div class="keywords"><span class="keyword">身體意象</span><span class="keyword">容貌焦慮</span><span class="keyword">社交媒體</span><span class="keyword">測量工具</span><span class="keyword">性別研究</span></div></div>
+
+  <div class="banner-section">
+    <a href="https://www.leepsyclinic.com/" class="banner-link" target="_blank" rel="noopener">
+      <span class="banner-icon">&#127973;</span>
+      <div>
+        <div class="banner-name">李政洋身心診所首頁</div>
+      </div>
+      <span class="banner-arrow">&rarr;</span>
+    </a>
+  </div>
+
+  <div class="banner-section">
+    <a href="https://blog.leepsyclinic.com/" class="banner-link" target="_blank" rel="noopener">
+      <span class="banner-icon">&#128231;</span>
+      <div>
+        <div class="banner-name">訂閱電子報</div>
+      </div>
+      <span class="banner-arrow">&rarr;</span>
+    </a>
+  </div>
+
+  <div class="banner-section">
+    <a href="https://buymeacoffee.com/CYlee" class="banner-link" target="_blank" rel="noopener">
+      <span class="banner-icon">&#9749;</span>
+      <div>
+        <div class="banner-name">Buy Me a Coffee</div>
+      </div>
+      <span class="banner-arrow">&rarr;</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3-super-120b-a12b</span>
+    <span><a href="https://github.com/u8901006/appearance-anxiety">GitHub</a></span>
+  </footer>
+</div>
+</body>
+</html>
